@@ -1,30 +1,27 @@
 <!DOCTYPE html>
+<?php
+	$_SESSION['altas']=1;
+	include "sesionUno.php";
+?>
+
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Alta libro</title>
+	<title>Alta Usuario</title>
+	<link href="css/registro.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<?php
-	include_once("conexion.php");
-	var_dump($_POST);
+	<h1>Registro de Usuario</h1>
+	<p>Por favor ingrese su información</p>
+	<br/>
 
-	$nombre =filter_var( $_POST['nombre'], FILTER_SANITIZE_STRING);
-	$appat = filter_var($_POST['appat'], FILTER_SANITIZE_STRING);
-	$correo =filter_var($_POST['correo'], FILTER_SANITIZE_EMAIL);
-	$apmat = filter_var($_POST['apmat'], FILTER_SANITIZE_STRING);
-	$tel = filter_var($_POST['tel'], FILTER_SANITIZE_STRING);
-
-	if(!empty($nombre)||!empty($correo)||!empty($tel)||!empty($appat)||!empty($apmat)){
-		$comentario = "insert into registro (nombre, correo, telefono, appaterno, apmaterno) values('$nombre','$correo','$tel','$appat','$apmat');";
-		$guarda_comentario = consulta($comentario);
-	if($guarda_comentario == false){
-		echo "Gracias por dejar tu comentario, en caso de ser necesario nuestros colaboradores se pondrán en contacto contigo";
-	} else {
-		echo "Hubo un error al intentar guardar tu comentario, intenta más tarde";
-	} else {
-		echo "Los valores ingresados no son válidos";
-	}
-?>
+	<form action="registro.php" method="post">	
+	<p>Nombre</p><input type="text" name="Nombre"autocomplete="off"/><br/>
+	<p>Apellido Paterno</p><input type="text" name="ap_paterno"autocomplete="off"/><br/>
+	<p>Apellido Materno</p><input type="text" name="ap_materno" autocomplete="off"/><br/>
+	<p>Usuario</p><input type="text" name="usuario" autocomplete="off"/><br/>
+	<p>Contraseña</p><input type="password" name="contrasena" autocomplete="off"/><br/>
+	<input type="submit" value="Ingresar">
+	</form>
 </body>
 </html>

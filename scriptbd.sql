@@ -4,7 +4,8 @@ CREATE TABLE usuarios(id_usuario serial primary key,
 nombre varchar(40) not null,
 ap_paterno varchar(40) not null,
 ap_materno varchar(40) not null,
-usuario varchar(40) not null);
+usuario varchar(40) not null,
+contrasena varchar(30) not null);
 
 CREATE TABLE autor(id_autor serial primary key, 
 nombre varchar(40) not null,
